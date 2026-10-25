@@ -355,8 +355,8 @@ elif page == "2. HR Dashboard":
         for _, row in df_eval.iterrows():
             combined_records.append({
                 "comment_id": row["comment_id"],
-                "department": row.get("department", "Engineering"),
-                "location": row.get("location", "Bengaluru"),
+                "department": row.get("department", "Unknown"),
+                "location": row.get("location", "Unknown"),
                 "anonymised_text": row["anonymised_text"],
                 "theme": row["pred_theme"],
                 "sentiment": row["pred_sentiment"],
@@ -508,8 +508,8 @@ elif page == "3. Escalation Queue":
         for _, row in df_eval[df_eval["pred_escalate"] == True].iterrows():
             escalation_items.append({
                 "comment_id": row["comment_id"],
-                "department": row.get("department", "Engineering"),
-                "location": row.get("location", "Bengaluru"),
+                "department": row.get("department", "Unknown"),
+                "location": row.get("location", "Unknown"),
                 "theme": row["pred_theme"],
                 "severity": row["pred_severity"],
                 "anonymised_text": row["anonymised_text"],
@@ -584,7 +584,7 @@ elif page == "4. Security Log":
             if row.get("pred_injection_attempt") is True or row.get("category") == "injection":
                 security_events.append({
                     "comment_id": row["comment_id"],
-                    "department": row.get("department", "Engineering"),
+                    "department": row.get("department", "Unknown"),
                     "threat_type": "Prompt Injection / System Override",
                     "anonymised_text": row["anonymised_text"],
                     "flagged_at": "Dataset Log"
